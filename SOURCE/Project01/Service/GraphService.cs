@@ -90,13 +90,12 @@ namespace Project01.Service
             Vertex centerVertex = getMaxDegreeVertex(verticesList);
             bool[] visited = new bool[totalVertices];
             int centerVertexDegree = centerVertex.getDegree();
-            int centerVertexId = verticesList.IndexOf(centerVertex);
-            visited[centerVertexId] = true;
+            visited[centerVertex.getId()] = true;
             int degree3VertexCount = countVertexWithDegree(verticesList, 3);
             if ((centerVertexDegree == (totalVertices - 1)) && (degree3VertexCount == (totalVertices - 1)))
             {
                 int nextPointIndex;
-                if ((centerVertexId == 0) || (centerVertexId == totalVertices - 1))
+                if ((centerVertex.getId() == 0) || (centerVertex.getId() == totalVertices - 1))
                 {
                     nextPointIndex = 1;
                 }
@@ -109,7 +108,7 @@ namespace Project01.Service
                         visited[nextPointIndex] = true;
                         foreach (int neighbor in next.getNeighbors())
                         {
-                            if ((neighbor != centerVertexId) && (!visited[neighbor]))
+                            if ((neighbor != centerVertex.getId()) && (!visited[neighbor]))
                             {
                                 nextPointIndex = neighbor;
                                 next = verticesList[nextPointIndex];
@@ -194,7 +193,7 @@ namespace Project01.Service
             int centerVertexDegree = totalVertices - 1;
             int centerVertexCount = countVertexWithDegree(verticesList, centerVertexDegree);
             int cycleCount = (totalVertices - 1) / 2;
-            if ((centerVertexCount == 1) && (degree2VertexCount == (totalVertices - 1)))
+            if ((centerVertexCount == 1) && (degree2VertexCount == (totalVertices - 1)) && (totalVertices % 2 == 1))
             {
                 Console.WriteLine("Do thi tinh ban: k={0}", cycleCount);
             }

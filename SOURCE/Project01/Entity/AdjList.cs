@@ -51,7 +51,7 @@ namespace Project01.Entity
             return this.verticesList.Count;
         }
 
-        public int countVerticesWithDegree(int degree)
+        /*public int countVerticesWithDegree(int degree)
         {
             int result = 0;
             foreach (Vertex vertex in this.verticesList)
@@ -62,6 +62,6 @@ namespace Project01.Entity
                 }
             }
             return result;
-        }
+        }*/
     }
 }
